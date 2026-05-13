@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const orders = loadOrderHistory();
         if (!orders.length) {
-            profileOrdersList.innerHTML = '<div class="profile-orders-empty">Abhi tak koi order place nahi hua. Menu se order karke history yahan dekh sakte ho.</div>';
+            profileOrdersList.innerHTML = '<div class="profile-orders-empty">You have no orders. Make order from menu you can see order history here</div>';
             return;
         }
 
