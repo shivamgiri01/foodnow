@@ -1,4 +1,4 @@
-﻿/* ----------------------------------
+/* ----------------------------------
         1. RESET & NEW GLOBAL STYLES (Swiggy/Zomato Inspired)
         ----------------------------------
         */
@@ -1396,6 +1396,10 @@ main.container {
 #page-payment .payment-summary {
     position: sticky;
     top: 100px;
+}
+
+#payment-done-btn {
+    margin-top: 1rem;
 }
 
 /* ----------------------------------
