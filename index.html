@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -252,6 +252,7 @@
                 <div class="payment-layout">
                     <div class="payment-panel">
                         <h3>Payment Method</h3>
+                        <p class="demo-note">Demo only: this payment page is just for showing the flow. Please do not make any actual payment.</p>
                         <div class="payment-method-card">
                             <div class="payment-method-top">
                                 <div class="payment-method-badge">UPI</div>
@@ -296,6 +297,7 @@
                 </svg>
                 <h2>Order Confirmed!</h2>
                 <p>Thank you for your purchase. Your food is on its way!</p>
+                <p class="demo-note">This is just a demo. Do not expect any real food delivery from this website.</p>
                 <div class="order-details">
                     <p><span>Order ID:</span> <span id="success-order-id"></span></p>
                     <p><span>Name:</span> <span id="success-user-name"></span></p>
@@ -481,8 +483,10 @@
         messagingSenderId: "890124304996",
         appId: "1:890124304996:web:ff5f8cb6acc566534bd571"
     };
-</script>
-
+    </script>
+    <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="4cRKJlhNxMirhia9apQqQ";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="module" src="script.js"></script>
 </body>
