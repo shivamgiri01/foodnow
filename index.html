@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOD NOW - Fast Food Delivery</title>
+    <meta name="description" content="FoodNow - fast food delivery demo with Google login and profile setup." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/favicon/foodnow.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="logo nav-link" data-page="home">FOOD<span>NOW</span></a>
+
+            <ul class="nav-links">
+                <li><a class="nav-link active" data-page="home">Home</a></li>
+                <li><a class="nav-link" data-page="menu">Menu</a></li>
+                <li><a class="nav-link" data-page="about">About</a></li>
+                <li><a class="nav-link" data-page="contact">Contact</a></li>
+                <li>
+                    <a class="cart-icon nav-link" data-page="cart">
+                        <svg class="icon" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span class="cart-label">Cart</span>
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-icons">
+                <a class="cart-icon nav-link mobile-cart-icon" data-page="cart">
+                    <svg class="icon" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                    <span class="cart-label">Cart</span>
+                    <span class="cart-count">0</span>
+                </a>
+
+                <a href="#" class="profile-icon-link nav-link" data-page="login" id="profile-icon-link" aria-label="Profile" title="Profile">
+                    <img id="profile-avatar-image" class="profile-avatar-image" alt="Profile picture" style="display:none;">
+                    <svg class="profile-avatar-fallback" id="profile-avatar-fallback" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 12.5a4.5 4.5 0 1 0-4.5-4.5 4.5 4.5 0 0 0 4.5 4.5z"></path>
+                        <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
+                    </svg>
+                </a>
+
+                <button type="button" class="header-logout-btn" id="header-logout-btn">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 17l5-5-5-5"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 4v16"></path>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+
+                <div class="hamburger">
+                    <svg class="icon" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-close">
+            <svg class="icon" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a class="mobile-nav-link" data-page="home">Home</a></li>
+            <li><a class="mobile-nav-link" data-page="menu">Menu</a></li>
+            <li><a class="mobile-nav-link" data-page="about">About</a></li>
+            <li><a class="mobile-nav-link" data-page="contact">Contact</a></li>
+            <li><a class="mobile-nav-link login-btn" data-page="login">Login / Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="page-home" class="page active">
+            <section class="hero">
+                <h1 class="hero-title">Hungry? You're in the right place.</h1>
+                <p class="hero-subtitle">Order pizza, burgers, momos, rolls, chowmin and drinks, delivered fast.</p>
+
+                <div class="hero-search">
+                    <div class="search-bar">
+                        <svg class="icon" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" id="hero-search-input" placeholder="Search for food, category...">
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-primary explore-menu-btn nav-link" data-page="menu">Explore Full Menu</a>
+            </section>
+
+            <section class="categories">
+                <h2 class="section-title" data-aos="foodnow-title">Popular Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card card nav-link" data-page="menu" data-category="Pizza" data-aos="foodnow-reveal" data-aos-delay="0">
+                        <img src="img/popular-catagories/pizza.jpg" alt="Pizza">
+                        <h3>Pizza</h3>
+                    </div>
+                    <div class="category-card card nav-link" data-page="menu" data-category="Burger" data-aos="foodnow-reveal" data-aos-delay="90">
+                        <img src="img/popular-catagories/burger.jpg" alt="Burgers">
+                        <h3>Burger</h3>
+                    </div>
+                    <div class="category-card card nav-link" data-page="menu" data-category="Momo" data-aos="foodnow-reveal" data-aos-delay="180">
+                        <img src="img/popular-catagories/momos.jpg" alt="Momos">
+                        <h3>Momos</h3>
+                    </div>
+                    <div class="category-card card nav-link" data-page="menu" data-category="Roll" data-aos="foodnow-reveal" data-aos-delay="270">
+                        <img src="img/popular-catagories/rolls.jpg" alt="Roll">
+                        <h3>Roll</h3>
+                    </div>
+                    <div class="category-card card nav-link" data-page="menu" data-category="Chowmin" data-aos="foodnow-reveal" data-aos-delay="360">
+                        <img src="img/popular-catagories/chowmein.jpg" alt="Chowmin">
+                        <h3>Chowmin</h3>
+                    </div>
+                    <div class="category-card card nav-link" data-page="menu" data-category="Drink" data-aos="foodnow-reveal" data-aos-delay="450">
+                        <img src="img/popular-catagories/drinks.jpg" alt="Drinks">
+                        <h3>Drinks</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="featured">
+                <h2 class="section-title" data-aos="foodnow-title" data-aos-delay="60">Top Picks</h2>
+                <div class="featured-grid" id="featured-grid-container">
+                    <div class="product-card card" data-aos="foodnow-reveal" data-aos-delay="0">
+                        <img src="img/food-items/pizza-1.webp" alt="Cheese Pizza" class="product-card-image">
+                        <div class="product-card-content">
+                            <h3>Cheese Pizza</h3>
+                            <span class="category">Pizza</span>
+                            <p class="description">Classic cheese pizza with tomato sauce, mozzarella and veggies.</p>
+                            <div class="product-card-footer">
+                                <span class="price">Rs. 199</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card card" data-aos="foodnow-reveal" data-aos-delay="90">
+                        <img src="img/food-items/pizza-3.webp" alt="Paneer Pizza" class="product-card-image">
+                        <div class="product-card-content">
+                            <h3>Paneer Pizza</h3>
+                            <span class="category">Pizza</span>
+                            <p class="description">Spiced paneer, onion, capsicum, mozzarella and creamy sauce.</p>
+                            <div class="product-card-footer">
+                                <span class="price">Rs. 299</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card card" data-aos="foodnow-reveal" data-aos-delay="180">
+                        <img src="img/food-items/burger-1.jpg" alt="Aloo Tikki Burger" class="product-card-image">
+                        <div class="product-card-content">
+                            <h3>Aloo Tikki Burger</h3>
+                            <span class="category">Burger</span>
+                            <p class="description">Crispy aloo tikki with onion, tomato and tangy house sauce.</p>
+                            <div class="product-card-footer">
+                                <span class="price">Rs. 69</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card card" data-aos="foodnow-reveal" data-aos-delay="270">
+                        <img src="img/food-items/momos-1.jpg" alt="Steamed Veg Momos" class="product-card-image">
+                        <div class="product-card-content">
+                            <h3>Steamed Veg Momos</h3>
+                            <span class="category">Momo</span>
+                            <p class="description">Soft momos filled with mixed vegetables and served with red chutney.</p>
+                            <div class="product-card-footer">
+                                <span class="price">Rs. 89</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="page-menu" class="page">
+            <div class="menu-header">
+                <h1 class="page-title">Our Full Menu</h1>
+                <p class="menu-intro">Pizza, burgers, momos, rolls, chowmin and drinks, freshly prepared for every craving.</p>
+                <div class="search-bar menu-search">
+                    <svg class="icon" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="text" id="menu-search-input" placeholder="Search by name, category, or keyword...">
+                </div>
+            </div>
+            <div class="menu-grid" id="menu-grid-container"></div>
+        </section>
+
+        <section id="page-cart" class="page">
+            <h1 class="page-title">Your Cart</h1>
+            <div id="cart-content-wrapper"></div>
+        </section>
+
+        <section id="page-checkout" class="page">
+            <h1 class="page-title">Checkout</h1>
+            <div class="checkout-container">
+                <div class="checkout-form card">
+                    <h3>Billing Details</h3>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="checkout-name">Full Name</label>
+                            <input type="text" id="checkout-name" placeholder="Full name" required>
+                            <span class="error-message" id="name-error">Name must contain only letters and spaces.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-phone">Mobile Number</label>
+                            <input type="tel" id="checkout-phone" placeholder="Mobile Number" required inputmode="numeric" maxlength="10" pattern="[0-9]{10}">
+                            <span class="error-message" id="phone-error">Phone number must be exactly 10 digits.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-address">Full Address</label>
+                            <textarea id="checkout-address" rows="4" placeholder="Full address" required></textarea>
+                            <span class="error-message" id="address-error">Address must be at least 10 characters long.</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Place Order</button>
+                    </form>
+                </div>
+
+                <div class="order-summary card">
+                    <h3>Your Order</h3>
+                    <div id="checkout-summary-items"></div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="checkout-summary-total">Rs. 0.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-payment" class="page">
+            <h1 class="page-title">Complete Payment</h1>
+            <div class="payment-container card">
+                <div class="payment-layout">
+                    <div class="payment-panel">
+                        <h3>Payment Method</h3>
+                        <div class="payment-method-card">
+                            <div class="payment-method-top">
+                                <div class="payment-method-badge">UPI</div>
+                                <div class="payment-secure-pill">Secure Payment</div>
+                            </div>
+                            <p>Scan the QR code with any UPI app and complete the payment.</p>
+                            <!-- <div class="payment-apps-row">
+                                <span class="payment-app-chip">GPay</span>
+                                <span class="payment-app-chip">PhonePe</span>
+                                <span class="payment-app-chip">Paytm</span>
+                                <span class="payment-app-chip">BHIM</span>
+                            </div> -->
+                            <img src="img/payment/payment.jpeg" alt="UPI QR Code" class="payment-qr-image">
+                            <!-- <div class="payment-upi-meta">
+                                <span>UPI ID</span>
+                                <strong>foodnow@upi</strong>
+                            </div> -->
+                            <!-- <div class="payment-note">
+                                Payment complete karne ke baad neeche <strong>Payment Done</strong> par click karein.
+                            </div> -->
+                        </div>
+                        <button type="button" class="btn btn-primary" id="payment-done-btn">Payment Done</button>
+                    </div>
+
+                    <div class="payment-summary card">
+                        <h3>Payment Summary</h3>
+                        <div id="payment-summary-items"></div>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="payment-summary-total">Rs. 0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-order-success" class="page">
+            <div class="success-container card">
+                <svg class="icon success-icon" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h2>Order Confirmed!</h2>
+                <p>Thank you for your purchase. Your food is on its way!</p>
+                <div class="order-details">
+                    <p><span>Order ID:</span> <span id="success-order-id"></span></p>
+                    <p><span>Name:</span> <span id="success-user-name"></span></p>
+                    <p><span>Mobile:</span> <span id="success-user-phone"></span></p>
+                    <p><span>Address:</span> <span id="success-user-address"></span></p>
+                    <p><span>Total Paid:</span> <strong id="success-total-price"></strong></p>
+                    <p><span>Est. Delivery:</span> <strong>30-45 Minutes</strong></p>
+                </div>
+                <a href="#" class="btn btn-primary nav-link" data-page="home">Back to Home</a>
+            </div>
+        </section>
+
+        <section id="page-about" class="page">
+            <h1 class="page-title">About FOOD NOW</h1>
+            <div class="static-page-content card">
+                <h3>Our Mission</h3>
+                <p>Our mission is to empower local restaurants and food businesses by helping them grow online. Many small vendors have great food but limited reach, so we aim to bridge that gap by providing a simple, effective platform where customers can easily browse menus and place orders directly from their website.</p>
+                <p>Creators (Shivam Giri, Rohan Singh, Shivam Singh, Shubham Singh, Satyam Shukla)</p>
+            </div>
+        </section>
+
+        <section id="page-blog" class="page">
+            <h1 class="page-title">Our Blog</h1>
+            <div class="static-page-content card">
+                <h3>The 5 Best Biryanis You Must Try</h3>
+                <p>Posted on: Nov 10, 2025</p>
+                <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Donec sollicitudin molestie malesuada.</p>
+                <a href="#" class="btn btn-secondary btn-small">Read More</a>
+            </div>
+        </section>
+
+        <section id="page-contact" class="page">
+            <h1 class="page-title">Contact Us</h1>
+            <div class="static-page-content card">
+                <p>Have a question or a problem? Get in touch with us!</p>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" rows="5" placeholder="Your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="page-login" class="page">
+            <div class="profile-dashboard is-logged-out" id="profile-dashboard">
+                <aside class="profile-sidebar">
+                    <div class="login-container card" id="profile-setup-card">
+                        <h2 id="profile-page-title">Login / Sign Up</h2>
+                        <p class="auth-copy" id="profile-page-copy">Continue with Google to create or access your account.</p>
+                        <div class="auth-actions">
+                            <button type="button" class="btn btn-primary" id="page-google-auth-btn">Continue with Google</button>
+                        </div>
+                    </div>
+
+                    <div class="login-container card" id="profile-form-card" style="display:none;">
+                        <h2>Complete Profile</h2>
+                        <form id="profile-form">
+                            <div class="profile-photo-field">
+                                <label for="profile-photo" class="profile-photo-preview" id="profile-photo-preview-trigger">
+                                    <img id="profile-photo-preview" alt="Profile preview" style="display:none;">
+                                    <div class="profile-photo-placeholder" id="profile-photo-placeholder">No photo selected</div>
+                                </label>
+                                <label for="profile-photo" class="btn btn-secondary btn-small profile-photo-button">Upload Profile Pic</label>
+                                <input type="file" id="profile-photo" accept="image/*" hidden>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-name">Full Name</label>
+                                <input type="text" id="profile-name" placeholder="Full name" minlength="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-phone">Phone Number</label>
+                                <input type="tel" id="profile-phone" placeholder="10 digit number" inputmode="numeric" maxlength="10" minlength="10" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-city">City</label>
+                                <select id="profile-city" required>
+                                    <option value="">Select city</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="UP">UP</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-gender">Gender</label>
+                                <select id="profile-gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Profile</button>
+                        </form>
+                        <p class="toggle-form">
+                            <span id="profile-status" hidden>Profile saved. You are ready to use the site.</span>
+                        </p>
+                    </div>
+                </aside>
+
+                <section class="profile-orders-panel card" id="profile-orders-panel" hidden>
+                    <div class="profile-orders-header">
+                        <h2>Your Orders</h2>
+                    </div>
+                    <div id="profile-orders-list" class="profile-orders-list"></div>
+                </section>
+            </div>
+        </section>
+
+        <section id="page-privacy" class="page">
+            <h1 class="page-title">Privacy Policy</h1>
+            <div class="static-page-content card">
+                <h3>Privacy Policy</h3>
+                <p>This demo website uses browser storage for cart and Firebase Auth/Firestore for login and profile data. It does not use Firebase Storage.</p>
+            </div>
+        </section>
+
+        <section id="page-terms" class="page">
+            <h1 class="page-title">Terms of Service</h1>
+            <div class="static-page-content card">
+                <h3>Demo Website Notice</h3>
+                <p>This is a demo website. Menu, checkout and order history are for learning purposes only.</p>
+            </div>
+        </section>
+
+        <section id="page-cookies" class="page">
+            <h1 class="page-title">Cookie Policy</h1>
+            <div class="static-page-content card">
+                <h3>Cookie Policy</h3>
+                <p>This demo may use browser storage for cart and guest session preferences.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="footer-column">
+                <h3>FOOD NOW</h3>
+                <p>Fresh food delivery, simple ordering, and a clean local-first demo experience.</p>
+                <p>Order fast, eat fresh, repeat.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a class="nav-link" data-page="home">Home</a></li>
+                    <li><a class="nav-link" data-page="menu">Menu</a></li>
+                    <li><a class="nav-link" data-page="about">About</a></li>
+                    <li><a class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a class="nav-link" data-page="privacy">Privacy</a></li>
+                    <li><a class="nav-link" data-page="terms">Terms</a></li>
+                    <li><a class="nav-link" data-page="cookies">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>FoodNow support</p>
+                <p>Email: support@foodnow.com</p>
+                <p>Phone: +91 98765 43210</p>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 FoodNow. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+    window.FIREBASE_CONFIG = {
+        apiKey: "AIzaSyDUMrL9WKS4cxI2eVYkwNulA1p0xzr6vrU",
+        authDomain: "foodnow-c798d.firebaseapp.com",
+        projectId: "foodnow-c798d",
+        messagingSenderId: "890124304996",
+        appId: "1:890124304996:web:ff5f8cb6acc566534bd571"
+    };
+</script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
